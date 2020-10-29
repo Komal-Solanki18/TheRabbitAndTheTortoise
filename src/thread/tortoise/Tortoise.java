@@ -1,12 +1,16 @@
 package thread.tortoise;
 
-public class Tortoise  extends Thread{
+import javax.swing.*;
+
+public class Tortoise extends Thread {
     private static final int MILESTONES = 5;
-  public Tortoise() {
-      super("Tortoise");
-  }
+
+    public Tortoise() {
+        super("Tortoise");
+    }
+
     public void run() {
-        for(int index = 0; index < MILESTONES; index++) {
+        for (int index = 0; index < MILESTONES; index++) {
             switch (index) {
                 case 0:
                     System.out.println("The Tortoise has started from the start line!");
@@ -30,6 +34,13 @@ public class Tortoise  extends Thread{
                     System.out.println("The Tortoise has reached the finish line!");
                     break;
             }
-    }
+            try {
+                Thread.sleep(3000L);
+            } catch (InterruptedException e) {
+                System.err.println("The Tortoise has lost the path!");
+            }
+        }
+
     }
 }
+
